@@ -93,6 +93,7 @@ const CONFIG_DEFAULT = {
     '_i-name': 6,
     '_deal-total': 4.5,
     '_deal-per_second': 3.5,
+	'_deal-top3_pct': 3.5,
     '_deal-pct': 2,
     '_deal-failure': 3,
     '_deal-accuracy': 3,
@@ -339,6 +340,14 @@ const COLUMN_INDEX = {
         return isNaN(_)? '0' : _.toFixed(conf.format.significant_digit.dps)
       }
     },
+	top3_pct: {
+      v: 'encdps',
+      f: (_, conf) => {
+        _ = pFloat(_)
+        return isNaN(_)? '0' : _.toFixed(conf.format.significant_digit.dps)
+      }
+    },
+
     pct: {
       v: _ => parseInt(_['damage%']),
       f: (_, conf) => {
